@@ -41,6 +41,8 @@ jobs:
         run: pnpm test:e2e
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - name: Build for the repository Pages URL
         run: pnpm build
         env:
