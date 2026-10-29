@@ -26,4 +26,10 @@ The standard browser suite covers first render, mobile navigation, portrait MP4 
 
 To download and run the actual browser-local model weights as well, use `RUN_LOCAL_MODEL_TESTS=1 pnpm exec playwright test -g 'M2M100 translates|Whisper tiny' --workers=1`. The model test is excluded from default CI runs because first-use weights may be large; both models have been smoke-tested in a real browser.
 
+## GitHub Pages deployment
+
+The approved public repository (`charlie-svg/ai-myanmar-subtitle-system`) deploys its static `dist/` artifact from `.github/workflows/pages.yml` whenever `main` is updated. The repository's source, docs and test fixtures are public; the workflow installs the pinned pnpm toolchain, runs unit/type checks and browser E2E tests, and builds with `VITE_BASE_PATH=/ai-myanmar-subtitle-system/` for the GitHub project-site URL. This CI job builds/tests the site; runtime video, Whisper inference, translation and rendering still happen in each visitor's browser.
+
+For a deployed end-to-end smoke test after Pages is live, run `PLAYWRIGHT_BASE_URL=https://charlie-svg.github.io/ai-myanmar-subtitle-system/ RUN_LIVE_SMOKE=1 pnpm exec playwright test e2e/live-deploy.spec.ts --workers=1`. This opt-in test downloads the large local model weights and exercises a short speech MP4 through transcription, Burmese translation, masks, SRT/MP4 download, audio SHA-256 equality, and browser error collection.
+
 See [`THIRD_PARTY_NOTICES.md`](./THIRD_PARTY_NOTICES.md) for model and distribution notices.

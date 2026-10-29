@@ -14,10 +14,11 @@ Model weights download from the upstream model host on first use and are cached 
 - `src/types.ts` — shared caption/mask/log types and timecode, validation and SRT utilities.
 - `src/styles.css` — dark, mobile-first interface and custom player/masking overlays.
 - `src/subtitle-utils.test.ts` — deterministic cue validation and SubRip tests.
-- `e2e/` — Playwright smoke, mobile-navigation, mask, caption-download and actual FFmpeg export/audio-integrity browser coverage.
+- `e2e/` — Playwright smoke, mobile-navigation, mask, caption-download and actual FFmpeg export/audio-integrity browser coverage, plus an opt-in full live-site speech/transcription/translation/export run.
 - `public/manus-routes.json` — route manifest for the single studio route.
+- `.github/workflows/pages.yml` — least-privilege CI checks and static GitHub Pages artifact deployment.
 
-The static publish build is pinned by `package.json` and `pnpm-lock.yaml`; WebDev's managed application-server and database features remain disabled.
+The static publish build is pinned by `package.json` and `pnpm-lock.yaml`; WebDev's managed application-server and database features remain disabled. The approved public `charlie-svg/ai-myanmar-subtitle-system` repository uses `VITE_BASE_PATH=/ai-myanmar-subtitle-system/` to generate correct project-site asset URLs; GitHub Actions builds and serves static files while all visitor media work stays browser-local.
 
 ## Design
 

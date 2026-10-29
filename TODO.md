@@ -37,3 +37,20 @@
 - [x] **Acceptance:** Dark mode by default, featuring deep indigo, electric blue, or emerald green accents.
 - [x] **Acceptance:** Ensure all build processes, TypeScript type-checks, and end-to-end tests pass successfully.
 - [x] **Evidence:** Responsive dark studio with bottom navigation at 390 px; `pnpm test`, `pnpm typecheck`, `pnpm build`, and `pnpm test:e2e` are run before checkpointing.
+
+## 8. Free public production deployment and URL
+- [x] **Decision:** User approved creating the public `ai-myanmar-subtitle-system` repository and deploying it to GitHub Pages.
+- [ ] **Acceptance:** App ကို Live တင်ပြီးသွားပါက အများသုံးလို့ရမယ့် တိုက်ရိုက် Web Link (URL) ကို ထုတ်ပေးပါ။
+- [ ] **Acceptance:** Deploy to free GitHub Pages (or similar free static hosting) without credit-card requirements.
+- [ ] **Evidence:** Public Pages site is configured, workflow completes, and its live URL is checked over HTTPS.
+
+## 9. Live input/output, model, mask, and audio-preservation test
+- [ ] **Acceptance:** ဗီဒီယိုဖိုင် ထည့်သွင်းခြင်း (Input) မှစ၍ လုပ်ဆောင်ချက်များကို Live ပေါ်တွင် စမ်းသပ်ပါ။
+- [ ] **Acceptance:** မူလစာတန်းဟောင်းများကို သုံးစွဲသူ ကိုယ်တိုင် သတ်မှတ်ဝါးဖျောက်နိုင်ခြင်း (Blur/Masking) ရှိမရှိ စစ်ဆေးပါ။
+- [ ] **Acceptance:** Whisper API ဖြင့် မြန်မာစာတန်းများ အချိန်ကိုက် တိကျစွာ ထွက်လာခြင်း ရှိမရှိ စစ်ဆေးပါ။
+- [ ] **Acceptance:** ဗီဒီယို၏ မူလအသံ (Original Audio) ကို stream copy ဖြင့် ၁၀၀% မူလအတိုင်း လုံးဝမပျက်ဘဲ ထိန်းသိမ်းထားနိုင်ခြင်း ရှိမရှိ အသေအချာ Test လုပ်ပြပါ။
+- [ ] **Evidence:** Opt-in deployed-site Playwright path uploads a short speech MP4, runs local Whisper and M2M100 in the browser, checks timestamped Myanmar cues, both masks, SRT/MP4 downloads, exact audio-payload SHA-256 equality and console/page errors.
+
+## 10. Live console and log inspection
+- [ ] **Acceptance:** Live ပေါ်တွင် Console Error သို့မဟုတ် တစုံတရာ ချို့ယွင်းချက် ရှိမရှိ နောက်ဆုံးတစ်ကြိမ် ထပ်မံစစ်ဆေးပြီး အတည်ပြုပေးပါ။
+- [ ] **Evidence:** The deployed-page smoke test captures browser console errors and uncaught page exceptions during the full input-to-output flow.

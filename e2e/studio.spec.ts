@@ -3,7 +3,7 @@ import { readFile } from 'node:fs/promises'
 import { join } from 'node:path'
 
 test('loads the local Myanmar subtitle studio and exposes primary tools', async ({ page }) => {
-  await page.goto('/')
+  await page.goto('./')
   await expect(page.getByRole('heading', { name: 'Give your video a voice.' })).toBeVisible()
   await expect(page.getByText('Nothing is uploaded to a server')).toBeVisible()
   await expect(page.getByRole('button', { name: /Choose a video/ })).toBeVisible()
@@ -12,7 +12,7 @@ test('loads the local Myanmar subtitle studio and exposes primary tools', async 
 
 test('subtitle editing navigation remains available at a mobile viewport', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
-  await page.goto('/')
+  await page.goto('./')
   const bottomNav = page.getByRole('navigation', { name: 'Bottom navigation' })
   await expect(bottomNav).toBeVisible()
   await bottomNav.getByRole('button', { name: 'Captions' }).click()
@@ -22,7 +22,7 @@ test('subtitle editing navigation remains available at a mobile viewport', async
 
 test('accepts an MP4, draws blur and black masks, exports SRT and renders MP4 with intact audio', async ({ page }) => {
   test.setTimeout(180_000)
-  await page.goto('/')
+  await page.goto('./')
   const fixture = await readFile(join(process.cwd(), 'e2e/fixtures/portrait.mp4'))
   await page.locator('input[type="file"]').setInputFiles({ name: 'portrait.mp4', mimeType: 'video/mp4', buffer: fixture })
   await expect(page.getByText('portrait.mp4', { exact: true }).first()).toBeVisible()
@@ -76,7 +76,7 @@ test('accepts an MP4, draws blur and black masks, exports SRT and renders MP4 wi
 test('M2M100 translates a sample into Myanmar script locally', async ({ page }) => {
   test.skip(process.env.RUN_LOCAL_MODEL_TESTS !== '1', 'Optional network-backed model smoke test downloads the browser-local weights.')
   test.setTimeout(240_000)
-  await page.goto('/')
+  await page.goto('./')
   const translation = await page.evaluate(async () => {
     const { translateLocal } = await import(new URL('/src/local-ai.ts', location.origin).href)
     const result = await translateLocal([{ id: 'smoke', start: 0, end: 2, source: 'Good morning. Thank you for your help.', text: '' }], 'en', () => undefined)
@@ -88,7 +88,7 @@ test('M2M100 translates a sample into Myanmar script locally', async ({ page }) 
 test('Whisper tiny transcribes a speech fixture locally with usable timestamps', async ({ page }) => {
   test.skip(process.env.RUN_LOCAL_MODEL_TESTS !== '1', 'Optional network-backed model smoke test downloads the browser-local weights.')
   test.setTimeout(240_000)
-  await page.goto('/')
+  await page.goto('./')
   const speech = await readFile(join(process.cwd(), 'e2e/fixtures/jfk.flac'))
   const segments = await page.evaluate(async (audioBase64) => {
     const bytes = Uint8Array.from(atob(audioBase64), (char) => char.charCodeAt(0))

@@ -23,4 +23,4 @@ This static client downloads a bundled FFmpeg WebAssembly core, uses Transformer
 
 ## E2E speech fixture
 
-`e2e/fixtures/jfk.flac` is a short speech fixture from [`openai/whisper/tests/jfk.flac`](https://github.com/openai/whisper/blob/main/tests/jfk.flac). It is used only in the optional local Whisper inference smoke test, not shipped as model data or used by the application workflow. The OpenAI Whisper repository is MIT-licensed; see the upstream [`LICENSE`](https://github.com/openai/whisper/blob/main/LICENSE).
+`e2e/fixtures/jfk.flac` is a short speech fixture from [`openai/whisper/tests/jfk.flac`](https://github.com/openai/whisper/blob/main/tests/jfk.flac). `jfk_portrait.mp4` pairs the same speech with a generated solid-color portrait video track and AAC audio for the opt-in deployed-page E2E test. Both are test-only and are not used by the application workflow. The OpenAI Whisper repository is MIT-licensed; see the upstream [`LICENSE`](https://github.com/openai/whisper/blob/main/LICENSE).
