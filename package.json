@@ -1,0 +1,32 @@
+{
+  "name": "ai-myanmar-subtitle-system",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "packageManager": "pnpm@11.25.0",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc -b && vite build",
+    "typecheck": "tsc -b --pretty",
+    "test": "vitest run src",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@ffmpeg/core": "0.12.10",
+    "@ffmpeg/ffmpeg": "0.12.15",
+    "@huggingface/transformers": "3.7.2",
+    "lucide-react": "0.468.0",
+    "react": "19.0.0",
+    "react-dom": "19.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.51.1",
+    "@types/node": "22.13.10",
+    "@types/react": "19.0.8",
+    "@types/react-dom": "19.0.3",
+    "@vitejs/plugin-react": "4.3.4",
+    "typescript": "5.7.3",
+    "vite": "6.1.0",
+    "vitest": "3.0.5"
+  }
+}
